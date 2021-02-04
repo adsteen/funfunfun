@@ -95,8 +95,6 @@ royalty_fr <- function(abundance.matrix, trait.matrix, q = 0.5) {
   colnames(trait.matrix) <- overlap.names
   rownames(trait.matrix) <- trait.names
   abundance.matrix <- abundance.matrix[,overlap.names]
-  abundance.matrix <- t(abundance.matrix) #for some reason, R developers decided 1 dimensional matrices should be converted to vectors. Problematic if only analyzing 1 sample. Vectors do not work with apply. Transposing the vector is the current work around
-  rownames(abundance.matrix) <- sample.names
   
   fr_out <- apply(X = trait.matrix, 
                   MARGIN = 1,
