@@ -2,7 +2,7 @@
 % Please edit documentation in R/royalty_fr.R
 \name{royalty_fr}
 \alias{royalty_fr}
-\title{Functional redundancy via Royalty's method}
+\title{Functional redundancy via Contribution Evenness}
 \usage{
 royalty_fr(abundance.matrix, trait.matrix, q = 0.5)
 }
@@ -23,7 +23,7 @@ Calculates functional redundancy via the Royalty method, as described in INSERT 
 ANYTHING THAT NEEDS TO GO INTO THE DETAILS SECTION
 }
 \examples{
-# We should include examples, but I'm kind of confused about how examples work
+# 
 abundance.matrix <- read.csv('data/MAG_abundance_table.csv', row.names = 1 ) 
 abundance.matrix <- round(abundance.matrix/min(abundance.matrix[abundance.matrix>0])) 
 sample.effort <- min(rowSums(abundance.matrix))

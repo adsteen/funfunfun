@@ -1,4 +1,4 @@
-##' Functional redundancy via Royalty's method
+##' Functional redundancy via Contribution Evenness
 ##'
 ##' @export
 ##' @description Calculates functional redundancy via the Royalty method, as described in INSERT REFERENCE HERE.
@@ -7,7 +7,7 @@
 ##' @param q.range The diversity order to evaluate. The default setting evaluates diversity orders 0 through 2.
 ##' @details ANYTHING THAT NEEDS TO GO INTO THE DETAILS SECTION
 ##' @return Returns a list, where individual elements correspond to samples in the abundance matrix. The list includes an estimate of functional redundancy and functional diversity for each diversity order, q, as well as the species richness.
-##' @examples # We should include examples, but I'm kind of confused about how examples work
+##' @examples # 
 ##' abundance.matrix <- read.csv('data/MAG_abundance_table.csv', row.names = 1 ) 
 ##' abundance.matrix <- round(abundance.matrix/min(abundance.matrix[abundance.matrix>0])) 
 ##' sample.effort <- min(rowSums(abundance.matrix))

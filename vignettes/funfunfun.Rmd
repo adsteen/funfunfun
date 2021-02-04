@@ -17,3 +17,37 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(funcdivr)
 ```
+
+# Introduction
+
+funfunfun is an R package to calculate functional diversity using [Contribution Evenness](https://www.biorxiv.org/content/10.1101/2020.04.22.054593v1), a novel method described by Royalty and Steen which is tailored for microbial ecosystems.
+
+# Philosophy
+
+We will describe a bit of the philosophy here.
+
+# Use
+
+## Input file
+
+We use two input files:
+
+* The **abundance matrix** is a table containing a matrix of species abundances. Unique species are listed in columns, and unique sites are listed in rows.
+* The **trait matrix** is a table containing trait levels for the same species as are in the abundance matrix, also in rows. An arbitrary number of traits are listed in columns.
+
+For this vignette, the abundance matrix is `species_abund` and the trait matrix is `trait_levels`.
+
+**Add a bit about their formatting, and where you might get a file like that from**
+
+```{r}
+#abundance.matrix <- read.csv('data/MAG_abundance_table.csv', row.names = 1 ) 
+abundance.matrix <- round(species.abund/min(species.abund[abundance.matrix>0])) 
+sample.effort <- min(rowSums(abundance.matrix))
+abundance.matrix <- vegan::rrarefy(abundance.matrix,sample.effort)
+abundance.matrix <- sweep(abundance.matrix,1,rowSums(abundance.matrix),'/')
+# trait.matrix <- read.csv('data/MAG_enzyme_gene_copies.csv', row.names = 1 )
+fr <- royalty_fr(abundance.matrix, trait.levels, q = 0.5)
+fr <- tidyr::separate(fr,sample,into = c("site","size_fraction","depth"), sep = '_')
+ggplot2::ggplot(fr,aes(x=trait,y=fr,color=depth))+geom_boxplot()+ylim(0,0.7)  
+```
+
