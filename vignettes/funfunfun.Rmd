@@ -22,11 +22,13 @@ library(funfunfun)
 
 funfunfun is an R package to calculate functional diversity using [Contribution Evenness](https://www.biorxiv.org/content/10.1101/2020.04.22.054593v1), a novel method described by Royalty and Steen which is tailored for microbial ecosystems.
 
-# Philosophy
+# Theory
 
-We will describe a bit of the philosophy here.
+A functional redundancy measurement tailored for community-aggregated parameters, or the summed ecosystem processes contributed by species. First, the relative contribution that species make towards a community-aggregated parameter is determined by taking the product of species-specific trait level and the species respective abundance. This value is normalized by the summed total from across the community to determine the relative contribution by species to a community-aggregated parameter. The effective number of species contributing to a community-aggregated paramter is  calculated by passing the relative contribution distribution to the HCDT entropy equation, where entropy is and converted into an effective richness (Jost 2006). The effective richness of species contributing to a community-aggregated parameter is then normalized by the maximum theoretical number species which could contribute to the community-aggregated parameter (i.e., the community richness). This value corresponds to the proportion of the community contributing the community-aggregated parameter. Last, this value is made unrelated to species richness, which allows for comparisons between communities with different richness (Chao & Ricotta 2019).  
 
 # Use
+For calculating functional redundancy when species-specific trait data (e.g., gene copies, chemical transformation rates, etc.) and species-abundance data is available.
+
 
 ## Input file
 
