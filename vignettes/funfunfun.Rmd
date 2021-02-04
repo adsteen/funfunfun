@@ -39,8 +39,10 @@ We use two input files:
 
 For this vignette, the abundance matrix is `species_abund` and the trait matrix is `trait_levels`.
 
-**Add a bit about their formatting, and where you might get a file like that from**
+Species relative abundance data was downloaded from https://doi.org/10.6084/m9.figshare.5188273. Relative abundances were converted into count data by multiplying site sequencing effort into metagenome-assembled genome relative abundances.
 
+Trait data represents the gene copy numbers for different nitrogen-transforming pathways in metagenome-assembled genomes downloaded from https://doi.org/10.6084/m9.figshare.5188273.
+ 
 ```{r}
 #abundance.matrix <- read.csv('data/MAG_abundance_table.csv', row.names = 1 ) 
 abundance.matrix <- round(species.abund/min(species.abund[species.abund>0])) 
