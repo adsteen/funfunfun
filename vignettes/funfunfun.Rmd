@@ -41,7 +41,7 @@ For this vignette, the abundance matrix is `species_abund` and the trait matrix 
 
 ```{r}
 #abundance.matrix <- read.csv('data/MAG_abundance_table.csv', row.names = 1 ) 
-abundance.matrix <- round(species.abund/min(species.abund[abundance.matrix>0])) 
+abundance.matrix <- round(species.abund/min(species.abund[species.abund>0])) 
 sample.effort <- min(rowSums(abundance.matrix))
 abundance.matrix <- vegan::rrarefy(abundance.matrix,sample.effort)
 abundance.matrix <- sweep(abundance.matrix,1,rowSums(abundance.matrix),'/')
