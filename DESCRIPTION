@@ -1,12 +1,12 @@
 Package: funfunfun
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Package for calculting functional redundancy in microbial ecosystems
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Author: Taylor Royalty, Andrew Steen
+Maintainer: Andrew Steen <asteen1@utk.edu>
+Description: funfunfun (fun\[ction\] is redundant, get it?)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1

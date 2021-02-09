@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(funfunfun)
+#devtools::load_all() # for development only
 ```
 
 # Introduction
@@ -44,14 +45,22 @@ Species relative abundance data was downloaded from https://doi.org/10.6084/m9.f
 Trait data represents the gene copy numbers for different nitrogen-transforming pathways in metagenome-assembled genomes downloaded from https://doi.org/10.6084/m9.figshare.5188273.
  
 ```{r}
-#abundance.matrix <- read.csv('data/MAG_abundance_table.csv', row.names = 1 ) 
-abundance.matrix <- round(species.abund/min(species.abund[species.abund>0])) 
+abundance.matrix <- read.csv('data/MAG_abundance_table.csv', row.names = 1 )
+abundance.matrix <-
+  round(species.abund / min(species.abund[species.abund > 0]))
 sample.effort <- min(rowSums(abundance.matrix))
-abundance.matrix <- vegan::rrarefy(abundance.matrix,sample.effort)
-abundance.matrix <- sweep(abundance.matrix,1,rowSums(abundance.matrix),'/')
+abundance.matrix <- vegan::rrarefy(abundance.matrix, sample.effort)
+abundance.matrix <-
+  sweep(abundance.matrix, 1, rowSums(abundance.matrix), '/')
 # trait.matrix <- read.csv('data/MAG_enzyme_gene_copies.csv', row.names = 1 )
 fr <- royalty_fr(abundance.matrix, trait.levels, q = 0.5)
-fr <- tidyr::separate(fr,sample,into = c("site","size_fraction","depth"), sep = '_')
-ggplot2::ggplot(fr,aes(x=trait,y=fr,color=depth))+geom_boxplot()+ylim(0,0.7)  
+fr <-
+  tidyr::separate(fr,
+                  sample,
+                  into = c("site", "size_fraction", "depth"),
+                  sep = '_')
+ggplot2::ggplot(fr, ggplot2::aes(x = trait, y = fr, color = depth)) +
+  ggplot2::geom_boxplot() +
+  ggplot2::ylim(0, 0.7)  
 ```
 
